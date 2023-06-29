@@ -6,9 +6,10 @@ public class Main : MonoBehaviour
 {
     public ParticleManager pm;
     public UIHandler uiobject;
-    public BossHandler bh;
+    public FireBossHandler bh;
     public PlayerAttack pa;
     public List<GameObject> fireList;
+    public List<GameObject> dropletList;
     public bool playerEnabled;
     public GameObject player;
     // Start is called before the first frame update
@@ -32,6 +33,7 @@ public class Main : MonoBehaviour
         pa.Start();
         pa.st.energy = 0;
         destroyAllMiniFire();
+        destroyAllMiniDroplet();
         playerEnabled = true;
         player.GetComponent<SpriteRenderer>().color = Color.white;
         player.SetActive(true);
@@ -42,6 +44,14 @@ public class Main : MonoBehaviour
         foreach(GameObject miniFire in fireList)
         {
             Destroy(miniFire);
+        }
+    }
+
+    public void destroyAllMiniDroplet()
+    {
+        foreach(GameObject miniDroplet in dropletList)
+        {
+            Destroy(miniDroplet);
         }
     }
 }

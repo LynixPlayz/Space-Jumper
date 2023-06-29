@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1349245663164706808}
   - component: {fileID: 8086039465771647254}
   - component: {fileID: -5305215045341484966}
-  - component: {fileID: 5109852270764367071}
+  - component: {fileID: 3879232637842448178}
   m_Layer: 0
   m_Name: Beam
   m_TagString: Weapon
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
---- !u!68 &5109852270764367071
-EdgeCollider2D:
+--- !u!61 &3879232637842448178
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,21 +108,22 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.01
-  m_Points:
-  - {x: -3.1999998, y: 3.1687427}
-  - {x: 3.2012458, y: 3.0721035}
-  - {x: 3.1990807, y: -3.0755444}
-  - {x: -3.176459, y: -3.0755446}
-  - {x: -3.1950374, y: 3.0755448}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.4, y: 6.4}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.4, y: 6.4}
+  m_EdgeRadius: 0
 --- !u!1 &3757568096019918293
 GameObject:
   m_ObjectHideFlags: 0

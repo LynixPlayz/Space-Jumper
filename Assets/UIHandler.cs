@@ -7,7 +7,7 @@ public class UIHandler : MonoBehaviour
 {
     public Slider UIBar;
     public InputField input;
-    public BossHandler bh;
+    public FireBossHandler bh;
     public StorageTrigger st;
     public Slider EnergyBar;
     public GameObject retryUI;

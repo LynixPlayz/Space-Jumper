@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public StorageTrigger st;
     public GameObject AttackText;
     public InputHandler ih;
-    public BossHandler bh;
+    public FireBossHandler bh;
     private float timeDest;
     public float damageDelay;
     public GameObject beamPrefab;

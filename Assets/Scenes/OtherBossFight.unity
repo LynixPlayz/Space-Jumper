@@ -6128,7 +6128,7 @@ MonoBehaviour:
   st: {fileID: 638768081}
   AttackText: {fileID: 717749726}
   ih: {fileID: 1480608052}
-  bh: {fileID: 1602165124}
+  bh: {fileID: 0}
   damageDelay: 1
   beamPrefab: {fileID: 2232576588335121425, guid: 4c4e1aa46b787034d9c976d6536b0129, type: 3}
   game: {fileID: 1480608055}
@@ -6234,7 +6234,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1602165124}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BossHandler, Assembly-CSharp
         m_MethodName: StartScale
         m_Mode: 4
@@ -11854,8 +11854,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1602165124}
-        m_TargetAssemblyTypeName: BossHandler, Assembly-CSharp
-        m_MethodName: BossAttack2
+        m_TargetAssemblyTypeName: DropletBossHandler, Assembly-CSharp
+        m_MethodName: BossAttack1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12139,7 +12139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIBar: {fileID: 1544954567}
   input: {fileID: 1726871682}
-  bh: {fileID: 1602165124}
+  bh: {fileID: 0}
   st: {fileID: 638768081}
   EnergyBar: {fileID: 1513074136}
   retryUI: {fileID: 1821634221}
@@ -12200,7 +12200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pm: {fileID: 1480608056}
   uiobject: {fileID: 1480608051}
-  bh: {fileID: 1602165124}
+  bh: {fileID: 0}
   pa: {fileID: 638768083}
   fireList: []
   playerEnabled: 0
@@ -12218,6 +12218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stars: {fileID: 1652732736}
+  dash: {fileID: 0}
 --- !u!1 &1483252669
 GameObject:
   m_ObjectHideFlags: 0
@@ -12744,11 +12745,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1602165123}
   - component: {fileID: 1602165122}
-  - component: {fileID: 1602165124}
-  - component: {fileID: 1602165125}
   - component: {fileID: 1602165126}
   - component: {fileID: 1602165127}
   - component: {fileID: 1602165128}
+  - component: {fileID: 1602165125}
+  - component: {fileID: 1602165124}
   m_Layer: 3
   m_Name: MainBoss
   m_TagString: Untagged
@@ -12796,7 +12797,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3d6a28ca1c57c114092c89fc159191f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5dbc990a61893a643ae8d3381f9215a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12815,7 +12816,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602165121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.9, y: 0, z: 0}
+  m_LocalPosition: {x: 8.52, y: -0.5, z: 0}
   m_LocalScale: {x: 0.6771414, y: 0.6771414, z: 0.6771414}
   m_Children:
   - {fileID: 1070864838}
@@ -12831,23 +12832,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1602165121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ae10d51be2c364189c03ada14aa786, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f99ae1e5c62dd7469593e82b4184f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniFirePrefab: {fileID: 4448953567288748229, guid: 103aa34409f408541a5a7f01ede8a4da, type: 3}
-  borderArea: {fileID: 1521200983}
-  bossHealth: 0
-  boss: {fileID: 1602165121}
-  startTime: 0
-  randomNum: 0
-  currentTime: 0
-  startTime2: 0
-  randomNum2: 0
-  currentTime2: 0
-  ah: {fileID: 1480608054}
-  attack1ready: 0
-  fireLine1: {fileID: 0}
-  fireLine2: {fileID: 0}
+  dropletMiniPrefab: {fileID: 7369494424692083584, guid: 71d2527116789924a873e6ec2862cec3, type: 3}
 --- !u!68 &1602165125
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -12861,47 +12849,32 @@ EdgeCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: -0.5}
-  m_EdgeRadius: 0.5
+  m_Offset: {x: 0.24, y: 0}
+  m_EdgeRadius: 0.33
   m_Points:
-  - {x: -0.008609772, y: -8.675032}
-  - {x: -1.4616834, y: -8.568751}
-  - {x: -2.4724193, y: -8.333699}
-  - {x: -4.6106358, y: -7.086736}
-  - {x: -4.6106334, y: -7.0392227}
-  - {x: -4.5652323, y: -7.083957}
-  - {x: -6.273233, y: -5.1504984}
-  - {x: -6.548445, y: -2.6977608}
-  - {x: -6.1152773, y: -1.4996921}
-  - {x: -5.410943, y: 1.0086623}
-  - {x: -5.16691, y: 2.2848473}
-  - {x: -5.4234276, y: 3.0657873}
-  - {x: -5.304499, y: 3.5352397}
-  - {x: -4.927939, y: 3.5155826}
-  - {x: -3.424938, y: 2.9613419}
-  - {x: -2.978092, y: 2.5714746}
-  - {x: -2.4126263, y: 3.1825178}
-  - {x: -1.7164514, y: 4.5533566}
-  - {x: -1.5136766, y: 6.1654453}
-  - {x: -1.8636444, y: 7.6232123}
-  - {x: -1.7335577, y: 7.9410224}
-  - {x: -0.45933744, y: 7.4189153}
-  - {x: 0.983055, y: 6.3503513}
-  - {x: 2.1641574, y: 5.198619}
-  - {x: 3.405803, y: 3.7908645}
-  - {x: 3.7770696, y: 3.2407715}
-  - {x: 3.7453344, y: 5.340863}
-  - {x: 3.997445, y: 5.3176603}
-  - {x: 5.309456, y: 3.3770635}
-  - {x: 6.342867, y: 0.7519883}
-  - {x: 6.623518, y: -1.1645315}
-  - {x: 6.4886394, y: -2.7900476}
-  - {x: 6.0551085, y: -4.4948845}
-  - {x: 5.066622, y: -6.101888}
-  - {x: 4.119514, y: -7.13364}
-  - {x: 3.068256, y: -7.8522377}
-  - {x: 1.5566359, y: -8.361972}
-  - {x: -0.03406477, y: -8.689167}
+  - {x: 0.12622273, y: -6.4052625}
+  - {x: -1.9167259, y: -6.331735}
+  - {x: -3.0470085, y: -5.635422}
+  - {x: -4.0309014, y: -4.260808}
+  - {x: -4.8836856, y: -2.7196937}
+  - {x: -4.27275, y: -0.9132211}
+  - {x: -3.4689255, y: 1.5017024}
+  - {x: -1.7995949, y: 4.042474}
+  - {x: -0.54222316, y: 6.1343617}
+  - {x: 0.02028352, y: 7.6039085}
+  - {x: 0.5883998, y: 6.4160476}
+  - {x: 0.86096966, y: 5.4095054}
+  - {x: 1.2332686, y: 4.049427}
+  - {x: 1.8889314, y: 2.811889}
+  - {x: 3.1045222, y: 1.4520271}
+  - {x: 3.8828704, y: 0.25887573}
+  - {x: 4.6138535, y: -1.4474015}
+  - {x: 4.4076185, y: -3.4516861}
+  - {x: 3.3454695, y: -5.6193194}
+  - {x: 2.2137482, y: -6.1297374}
+  - {x: 1.904742, y: -6.269102}
+  - {x: 1.9047418, y: -6.2691016}
+  - {x: 0.13598129, y: -6.4052625}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -12918,7 +12891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9de0cee0a178548b5f59279c73d549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bh: {fileID: 1602165124}
+  bh: {fileID: 0}
   needDamage: 0
 --- !u!50 &1602165127
 Rigidbody2D:

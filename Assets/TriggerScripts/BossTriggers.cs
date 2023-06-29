@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossTriggers : MonoBehaviour
 {
-    public BossHandler bh;
+    public FireBossHandler bh;
     public bool needDamage;
     void OnTriggerEnter2D(Collider2D col)
     {

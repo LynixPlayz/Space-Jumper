@@ -17,7 +17,11 @@ public class StorageTrigger : MonoBehaviour
             Debug.Log("Collider 1");
             
         }
-        if (col.offset.y <= 0.0f)
+        if (col.offset.y <= 0.0f && col.tag != "Weapon")
+        {
+            ah.PlayerDeath();
+        }
+        if(col.tag == "MiniDropletDeadly")
         {
             ah.PlayerDeath();
         }

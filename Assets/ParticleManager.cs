@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParticleManager : MonoBehaviour
 {
     public ParticleSystem stars;
+    public ParticleSystem dash;
     public void RunAllParticles()
     {
         RunBackgroundParticles();
@@ -18,5 +19,10 @@ public class ParticleManager : MonoBehaviour
     void FixedUpdate()
     {
         
+    }
+
+    void RunDashParticles()
+    {
+        dash.Play();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random=UnityEngine.Random;
 
-public class BossHandler : MonoBehaviour
+public class FireBossHandler : MonoBehaviour
 {
     public GameObject miniFirePrefab;
     public GameObject borderArea;
@@ -105,8 +105,8 @@ public class BossHandler : MonoBehaviour
         else{
             attack1ready = true;
         }
-        currentTime += Time.deltaTime;
-        currentTime2 += Time.deltaTime;
+        currentTime += Time.deltaTime / 2;
+        currentTime2 += Time.deltaTime / 2;
 
         if (Mathf.Round(currentTime * 100.0f) / 100.0f == randomNum)
         {

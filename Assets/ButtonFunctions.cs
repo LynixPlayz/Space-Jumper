@@ -8,11 +8,13 @@ public class ButtonFunctions : MonoBehaviour
     public Vector3 customSize;
     public void getBigger()
     {
-        gameObject.transform.localScale = customSize;
+        gameObject.transform.localScale += customSize - normalSize;
+        gameObject.GetComponent<Animator>().SetBool("doAnimation", false);
     }
 
     public void getSmaller()
     {
-        gameObject.transform.localScale = normalSize;
+        gameObject.transform.localScale -= customSize - normalSize;
+        gameObject.GetComponent<Animator>().SetBool("doAnimation", true);
     }
 }

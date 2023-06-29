@@ -20,6 +20,10 @@ using UnityEngine;
                 {
                     gameObject.tag = "Untagged";
                 }
+                else
+                {
+                    ParentUtils.MoveToBlankObject("fires", gameObject);
+                }
             }
             
          }
