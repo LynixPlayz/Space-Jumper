@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LineHandler : MonoBehaviour
 {
+    public List<LineSO> lhList;
+
     void Start()
     {
         LineRenderer line = gameObject.GetComponent<LineRenderer>();
@@ -21,5 +23,5 @@ public class LineHandler : MonoBehaviour
         BoxCollider2D box = gameObject.GetComponents<BoxCollider2D>()[1];
         box.size = new Vector2(1.5f, Mathf.Abs(Mathf.Abs(line.GetPosition(1).x - line.GetPosition(0).x)  * (1.0f / gameObject.transform.localScale.x)));
         box.offset = new Vector2(2.5f, (line.GetPosition(1).x - line.GetPosition(0).x)  * (1.0f / gameObject.transform.localScale.x) / 2);
-   }
+    }
 }

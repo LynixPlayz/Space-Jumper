@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     public TMP_Text DashEffectTimerText;
     public InputHandler ih;
     public bool countDown;
+    public GameObject dashParticleSystemObj;
+    public Vector2 lastMovePos;
+
+    private GameObject originalParent;
 
     void Update()
     {
@@ -39,6 +43,9 @@ public class PlayerMovement : MonoBehaviour
         if(game.playerEnabled && !pauseMovement)
         {
             player.transform.position = HandleParams(worldPosition, borderArea);
+            Quaternion rot = player.transform.rotation;
+            player.transform.rotation = Quaternion.Euler(rot.x, rot.y, (HandleParams(worldPosition, borderArea) - lastMovePos).y * 20);
+            lastMovePos = HandleParams(worldPosition, borderArea);
         }
         DashEffectTimerText.text = ((Mathf.Round(timeLeft * 100)) / 10).ToString();
     }
@@ -76,5 +83,16 @@ public class PlayerMovement : MonoBehaviour
         pauseMovement = true;
         yield return new WaitForSeconds(1);
         pauseMovement = false;
+        originalParent = player;
+        ParentUtils.MoveToBlankObject("TempParticleParent", dashParticleSystemObj);
+        game.pm.RunDashParticles();
+        StartCoroutine(moveBackToOriginalParent());
+    }
+
+    IEnumerator moveBackToOriginalParent()
+    {
+        yield return new WaitForSeconds(1.1f);
+        dashParticleSystemObj.transform.parent = originalParent.transform;
+        dashParticleSystemObj.transform.position = originalParent.transform.position;
     }
 }

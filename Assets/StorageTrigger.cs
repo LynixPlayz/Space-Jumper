@@ -9,15 +9,13 @@ public class StorageTrigger : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Test");
         if(col.tag == "MiniFire" && ah.game.playerEnabled)
         {
             Destroy(col.gameObject);
             energy += 25;
-            Debug.Log("Collider 1");
-            
+
         }
-        if (col.offset.y <= 0.0f && col.tag != "Weapon")
+        if (col.offset.y < 0.0f && col.tag != "Weapon")
         {
             ah.PlayerDeath();
         }
@@ -33,5 +31,10 @@ public class StorageTrigger : MonoBehaviour
         {
             energy = 100;
         }
+    }
+
+    public void setEnergy(float energyFloat)
+    {
+        energy = energyFloat;
     }
 }

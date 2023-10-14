@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tick : MonoBehaviour
 {
-    public float tick;
+    public static float tick;
 
     void Start()
     {

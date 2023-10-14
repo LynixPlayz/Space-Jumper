@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,30 +7,35 @@ public class Main : MonoBehaviour
 {
     public ParticleManager pm;
     public UIHandler uiobject;
-    public FireBossHandler bh;
+    public BossHandler bh;
     public PlayerAttack pa;
     public List<GameObject> fireList;
     public List<GameObject> dropletList;
     public bool playerEnabled;
     public GameObject player;
+    public AnimationHandler gameah;
+    public TutorialManager tutorialManager;
+
+    public GameObject gameManager;
     // Start is called before the first frame update
     void Start()
     {
         pm = GetComponent<ParticleManager>();
         pm.RunAllParticles();
         playerEnabled = true;
+        gameah = gameManager.GetComponent<AnimationHandler>();
+        tutorialManager.initPanelEventListeners(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        tutorialManager.syncPanels(this);
     }
 
     public void restart()
     {
         uiobject.removeRetryUI();
-        bh.Start();
+        if(bh){bh.Start();}
         pa.Start();
         pa.st.energy = 0;
         destroyAllMiniFire();
