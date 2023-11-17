@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AnimationHandler : MonoBehaviour
 {
@@ -11,8 +13,15 @@ public class AnimationHandler : MonoBehaviour
     public Animator bundleAnimator;
     public Animator coinsAnimator;
     public Animator winUiAnimator;
+    public Animator finishLineAnimator;
     public GameObject coins;
     public Main game;
+    public List<Transform> uiList;
+
+    void Start()
+    {
+        BossDeathEvent.BOSS_DEATH.AddListener(FinishLineAnim);
+    }
 
     public void ScaleBoss()
     {
@@ -20,6 +29,17 @@ public class AnimationHandler : MonoBehaviour
             bossAnimator.SetBool("playSizeUp", true);
             StartCoroutine(ToggleOff("playSizeUp", bossAnimator, 0.5f));
         }     
+    }
+
+    public void FinishLineAnim()
+    {
+        game.uiobject.hideAllUITimer(3495);
+        game.bh.boss.SetActive(false);
+        game.uiobject.finishLine.SetActive(true);
+        if (finishLineAnimator.GetBool("EndGame") == false){
+            finishLineAnimator.SetBool("EndGame", true);
+            StartCoroutine(ToggleOff("EndGame", finishLineAnimator, 3f));
+        }    
     }
 
     public void BossDeathAnim()
@@ -73,6 +93,8 @@ public class AnimationHandler : MonoBehaviour
     public void TreasureAnimation()
     {
         if (treasureAnimator.GetBool("giveTreasure") == false){
+            uiList = game.uiobject.hideAllUI();
+            game.uiobject.bundle.SetActive(true);
             treasureAnimator.SetBool("giveTreasure", true);
             StartCoroutine(ToggleOff("giveTreasure", treasureAnimator, 0.5f));
         }
@@ -126,6 +148,7 @@ public class AnimationHandler : MonoBehaviour
 
     IEnumerator childCoinsMove()
     {
+        /*TODO make child have random position (offsets) and make the amount of coins customizable with code https://gamedev.stackexchange.com/questions/72976/playing-an-animation-relative-to-current-transform-in-unity*/
         for (int i = 0; i < coins.transform.childCount; i++)
         {
             GameObject child = coins.transform.GetChild(i).gameObject;

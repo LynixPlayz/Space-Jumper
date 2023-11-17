@@ -8,6 +8,7 @@ namespace TriggerScripts
     {
         public Main game;
         public GameObject coins;
+        public bool treasureGiven = false;
         void OnTriggerEnter2D(Collider2D col)
         {
             if (col.CompareTag("Treasure"))
@@ -20,14 +21,17 @@ namespace TriggerScripts
         IEnumerator Wait(float milliseconds, AnimationWait waitFor)
         {
             yield return new WaitForSeconds(milliseconds / 1000);
-            if (waitFor.Equals(AnimationWait.AddCoinsToBundle))
+            if (waitFor.Equals(AnimationWait.AddCoinsToBundle) && !treasureGiven)
             {
                 coins.SetActive(true);
                 game.bh.ah.CoinBundleAnimation();
+                treasureGiven = true;
                 StartCoroutine(Wait(5000, AnimationWait.CloseTreasure));
             }
             else if (waitFor.Equals(AnimationWait.ExitBundle))
             {
+                game.bh.ah.treasureAnimator.gameObject.SetActive(false);
+                //foreach (var item in game.gameah.uiList) item.gameObject.SetActive(true);
                 game.bh.ah.BundleExitAnimation();
                 StartCoroutine(Wait(1000, AnimationWait.Win));
             }

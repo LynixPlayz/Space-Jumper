@@ -59,7 +59,7 @@ public class TutorialManager : MonoBehaviour
         }
 
         Transform foundObject = game.uiobject.uiTutorial.transform.Find(currentPanel.ToString());
-        Debug.Log("Searching for" + currentPanel + " Found: " + foundObject);
+        //Debug.Log("Searching for" + currentPanel + " Found: " + foundObject);
         if(foundObject) foundObject.gameObject.SetActive(true);
     }
 }

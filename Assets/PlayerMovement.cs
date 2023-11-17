@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,14 +17,47 @@ public class PlayerMovement : MonoBehaviour
     public GameObject DashEffectTimer;
     public TMP_Text DashEffectTimerText;
     public InputHandler ih;
-    public bool countDown;
     public GameObject dashParticleSystemObj;
     public Vector2 lastMovePos;
+    public bool challengeMode;
 
     private GameObject originalParent;
+    public bool scriptDisabled;
 
+    void Flap()
+    {
+        float x = player.transform.GetComponent<Rigidbody2D>().velocity.x;
+        player.transform.GetComponent<Rigidbody2D>().velocity = new Vector2(x, 6);
+        //Debug.Log("Flappedd");
+    }
+    
     void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex < 2) scriptDisabled = true;
+        else scriptDisabled = false;
+        if (scriptDisabled) return;
+        if (player.Equals(null))
+        {
+            PlayerMovementVariables variables =
+                GameObject.FindWithTag("PlayerVariables").transform.GetComponent<PlayerMovementVariables>();
+            Debug.Log(variables);
+            player = variables.player;
+            mainCamera = variables.mainCamera;
+            borderArea = variables.borderArea;
+            timeLeft = variables.timeLeft;
+            DashEffectTimer = variables.DashEffectTimer;
+            DashEffectTimerText = variables.DashEffectTimerText;
+            ih = variables.ih;
+            dashParticleSystemObj = variables.dashParticleSystemObj;
+            lastMovePos = variables.lastMovePos;
+            game = variables.game;
+        }
+        if (!challengeMode) {player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;} else {player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;}
+        Debug.Log(player.GetComponent<Rigidbody2D>().constraints);
+        if (Input.GetKeyDown(KeyCode.Space) && challengeMode)
+        {
+            Flap();
+        }
         if(timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
@@ -34,18 +69,29 @@ public class PlayerMovement : MonoBehaviour
     }
     public void FixedUpdate()
     {
+        if (scriptDisabled) return;
         if(ih.eCheck && timeLeft <= 0)
         {
             Dash();
         }
         Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-        if(game.playerEnabled && !pauseMovement)
+        if(game.playerEnabled && !pauseMovement && !challengeMode)
         {
             player.transform.position = HandleParams(worldPosition, borderArea);
             Quaternion rot = player.transform.rotation;
             player.transform.rotation = Quaternion.Euler(rot.x, rot.y, (HandleParams(worldPosition, borderArea) - lastMovePos).y * 20);
             lastMovePos = HandleParams(worldPosition, borderArea);
+        }
+        if (game.playerEnabled && !pauseMovement)
+        {
+            player.transform.position = new Vector3(HandleParams(worldPosition, borderArea).x, player.transform.position.y, 0);
+        }
+
+        if (player.transform.position.y <= borderArea.transform.GetChild(1).transform.position.y)
+        {
+            player.transform.position = new Vector3(player.transform.position.x,
+                borderArea.transform.GetChild(1).transform.position.y, 0);
         }
         DashEffectTimerText.text = ((Mathf.Round(timeLeft * 100)) / 10).ToString();
     }

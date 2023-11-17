@@ -13,6 +13,7 @@ public class FireBossHandler : BossHandler
     public LineRenderer fireLine2;
     public List<GameObject> lineFireList;
     public bool firstBossDeadRun = false;
+    public bool tutorialPauseAttack;
 
     public void Start()
     {
@@ -103,19 +104,29 @@ public class FireBossHandler : BossHandler
 
     public override void extraUpdate()
     {
-        if(GameObject.FindGameObjectsWithTag ("MiniFire").Length != 0)
+        if(GameObject.FindGameObjectsWithTag ("MiniFire").Length != 0 || tutorialPauseAttack)
         {
             attack1Ready = false;
         }
         else{
             attack1Ready = true;
         }
+        
+        if(tutorialPauseAttack)
+        {
+            attack2Ready = false;
+        }
+        else{
+            attack2Ready = true;
+        }
 
         if (isBossDead && firstBossDeadRun == false)
         {
             instantDespawn(lineFireList);
+            instantDespawn(ah.game.fireList);
             BossDeathEvent.BOSS_DEATH.Invoke();
             firstBossDeadRun = true;
+            tutorialPauseAttack = true;
         }
         //if(debug) Debug.Log(GameObject.FindGameObjectsWithTag ("MiniFire"));
     }

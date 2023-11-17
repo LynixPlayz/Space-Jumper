@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
@@ -19,7 +20,47 @@ public class UIHandler : MonoBehaviour
     public GameObject winScreen;
     public GameObject uiCanvas;
     public GameObject uiTutorial;
+    public GameObject finishLine;
+    public GameObject bundle;
 
+    private void Start()
+    {
+        bundle = game.gameah.bundleAnimator.gameObject.transform.parent.gameObject;
+    }
+
+    public List<Transform> hideAllUI()
+    {
+        List<Transform> uiList = new List<Transform>();
+        foreach (Transform child in uiCanvas.transform)
+        {
+            child.gameObject.SetActive(false);
+            if(child.gameObject.activeSelf) uiList.Add(child);
+        }
+
+        return uiList;
+    }
+    
+    public void hideAllUITimer(float milliseconds)
+    {
+        List<Transform> uiList = new List<Transform>();
+        foreach (Transform child in uiCanvas.transform)
+        {
+            if(child.gameObject.activeSelf == true) uiList.Add(child);
+            child.gameObject.SetActive(false);
+        }
+
+        StartCoroutine(setAllActive(uiList, milliseconds));
+    }
+
+    public IEnumerator setAllActive(List<Transform> list, float milliseconds)
+    {
+        yield return new WaitForSeconds(milliseconds / 1000);
+        foreach (var item in list)
+        {
+            item.gameObject.SetActive(true);
+        }
+    }
+    
     public static float getValue(Slider slider)
     {
         float value = slider.value;

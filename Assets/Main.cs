@@ -15,6 +15,7 @@ public class Main : MonoBehaviour
     public GameObject player;
     public AnimationHandler gameah;
     public TutorialManager tutorialManager;
+    [SerializeField] public bool challengeMode;
 
     public GameObject gameManager;
     // Start is called before the first frame update

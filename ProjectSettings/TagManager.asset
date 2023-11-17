@@ -11,6 +11,7 @@ TagManager:
   - MiniDropletDeadly
   - MiniDropletCollectable
   - Treasure
+  - PlayerVariables
   layers:
   - Default
   - TransparentFX

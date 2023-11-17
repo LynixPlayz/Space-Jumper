@@ -45,6 +45,7 @@ public class DropletBossHandler : BossHandler
             Vector2 randomPos = new Vector3(Random.Range(0, 16) - 8, 6, 0);
             GameObject droplet = Instantiate(dropletMiniPrefab, randomPos, gameObject.transform.rotation);
             Vector3 pos = droplet.transform.position;
+            droplet.transform.localScale /= 2;
             droplet.GetComponent<GlideController>().SetDestination(new Vector3(pos.x, -8, 0));
             list.Add(droplet);
         }

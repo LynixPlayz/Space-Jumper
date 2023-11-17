@@ -7992,7 +7992,7 @@ SpriteRenderer:
   m_SortingLayerID: 1740500803
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 15a7a8232613fec47a34ff892fee76b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a3a6f0cfba7fff4b8aef64d0c6c23d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8060,40 +8060,18 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0.03
   m_Points:
-  - {x: 2.044943, y: -0.16475281}
-  - {x: 2.152435, y: -0.20597391}
-  - {x: 2.3608851, y: -0.3917189}
-  - {x: 2.5498931, y: -0.5519638}
-  - {x: 2.5348244, y: -0.69810295}
-  - {x: 2.4122918, y: -0.92360073}
-  - {x: 1.9298797, y: -1.1432602}
-  - {x: 1.273241, y: -1.2749327}
-  - {x: 0.4094239, y: -1.3848532}
-  - {x: -0.31656352, y: -1.3976626}
-  - {x: -1.0662332, y: -1.3452127}
-  - {x: -1.5923368, y: -1.1994977}
-  - {x: -2.1839087, y: -1.0267007}
-  - {x: -2.5563455, y: -0.7012472}
-  - {x: -2.3371012, y: -0.33262974}
-  - {x: -2.0515833, y: -0.17696357}
-  - {x: -1.5211631, y: -0.0487186}
-  - {x: -1.0884547, y: 0.062259376}
-  - {x: -1.0578275, y: 0.6616934}
-  - {x: -0.9323128, y: 0.9327879}
-  - {x: -0.52439654, y: 1.328832}
-  - {x: -0.07511561, y: 1.4652973}
-  - {x: 0.59199923, y: 1.2592062}
-  - {x: 0.72529566, y: 1.1211166}
-  - {x: 0.8868808, y: 0.94406813}
-  - {x: 1.0086033, y: 0.68877006}
-  - {x: 1.0389403, y: 0.4208847}
-  - {x: 1.0423491, y: 0.06741798}
-  - {x: 1.5625311, y: -0.020486858}
-  - {x: 2.047206, y: -0.16400705}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+  - {x: 0.99789363, y: -0.6277802}
+  - {x: 0.9677679, y: -0.61876273}
+  - {x: -1.0311357, y: -0.60705644}
+  - {x: -1.027669, y: -0.33361202}
+  - {x: -0.2256842, y: -0.32324994}
+  - {x: -0.22542284, y: 0.38717481}
+  - {x: 0.28952554, y: 0.39016244}
+  - {x: 0.2980677, y: -0.30644828}
+  m_AdjacentStartPoint: {x: 1, y: -0.32}
+  m_AdjacentEndPoint: {x: 1, y: -0.32}
+  m_UseAdjacentStartPoint: 1
+  m_UseAdjacentEndPoint: 1
 --- !u!114 &638768081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8298,6 +8276,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 1480608055}
   coins: {fileID: 1519387754}
+  treasureGiven: 0
+--- !u!1 &669702153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 669702155}
+  - component: {fileID: 669702154}
+  m_Layer: 0
+  m_Name: PlayerMoveVars
+  m_TagString: PlayerVariables
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &669702154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669702153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331bd1c5470e0de42af7c6cb045bb04e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 638768077}
+  mainCamera: {fileID: 519420031}
+  borderArea: {fileID: 1521200983}
+  game: {fileID: 1480608055}
+  timeLeft: 0
+  DashEffectTimer: {fileID: 1705257830}
+  DashEffectTimerText: {fileID: 1705257832}
+  ih: {fileID: 1480608052}
+  dashParticleSystemObj: {fileID: 1056474335}
+  lastMovePos: {x: 0, y: 0}
+  challengeMode: 0
+  scriptDisabled: 0
+--- !u!4 &669702155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669702153}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1154618, y: 0.41981965, z: -0.00578205}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &687206295
 GameObject:
   m_ObjectHideFlags: 0
@@ -26548,7 +26583,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1480608050}
-  - component: {fileID: 1480608049}
   - component: {fileID: 1480608051}
   - component: {fileID: 1480608052}
   - component: {fileID: 1480608053}
@@ -26564,29 +26598,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1480608049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480608048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27c17cf296adbf64aacaeed26bebc89c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 638768077}
-  mainCamera: {fileID: 519420031}
-  borderArea: {fileID: 1521200983}
-  game: {fileID: 1480608055}
-  timeLeft: 0
-  DashEffectTimer: {fileID: 1705257830}
-  DashEffectTimerText: {fileID: 1705257832}
-  ih: {fileID: 1480608052}
-  countDown: 0
-  dashParticleSystemObj: {fileID: 1056474335}
-  lastMovePos: {x: 0, y: 0}
 --- !u!4 &1480608050
 Transform:
   m_ObjectHideFlags: 0
@@ -26624,6 +26635,10 @@ MonoBehaviour:
   coinCount: 0
   game: {fileID: 1480608055}
   winScreen: {fileID: 1565830215}
+  uiCanvas: {fileID: 0}
+  uiTutorial: {fileID: 0}
+  finishLine: {fileID: 0}
+  bundle: {fileID: 0}
 --- !u!114 &1480608052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26669,8 +26684,10 @@ MonoBehaviour:
   bundleAnimator: {fileID: 1055866291}
   coinsAnimator: {fileID: 1519387756}
   winUiAnimator: {fileID: 1565830217}
+  finishLineAnimator: {fileID: 0}
   coins: {fileID: 1519387754}
   game: {fileID: 1480608055}
+  uiList: []
 --- !u!114 &1480608055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26692,6 +26709,8 @@ MonoBehaviour:
   playerEnabled: 0
   player: {fileID: 638768077}
   gameah: {fileID: 1480608054}
+  tutorialManager: {fileID: 0}
+  challengeMode: 0
   gameManager: {fileID: 1480608048}
 --- !u!114 &1480608056
 MonoBehaviour:
@@ -32561,8 +32580,8 @@ MonoBehaviour:
   isBossDead: 0
   isAttack1Waiting: 0
   isAttack2Waiting: 0
-  attack1TimeMinAndMax: {x: 0, y: 0}
-  attack2TimeMinAndMax: {x: 0, y: 0}
+  attack1TimeMinAndMax: {x: 3, y: 5}
+  attack2TimeMinAndMax: {x: 5, y: 8}
   debug: 0
   dropletMiniPrefab: {fileID: 7369494424692083584, guid: 71d2527116789924a873e6ec2862cec3, type: 3}
   list: []
@@ -38720,7 +38739,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1821634222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38730,7 +38749,7 @@ RectTransform:
   m_GameObject: {fileID: 1821634221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4056095, y: 1.4056095, z: 1.4056095}
+  m_LocalScale: {x: 0.8340184, y: 0.8340184, z: 0.8340184}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 494836359}
@@ -38740,7 +38759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 91.21599, y: -24.828321}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1839127988
@@ -40349,6 +40368,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 638768079}
     m_Modifications:
+    - target: {fileID: 4132905010271971488, guid: bde5feb4b7f341d40ad9b125fdaeefcd, type: 3}
+      propertyPath: m_Size.x
+      value: 1.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132905010271971488, guid: bde5feb4b7f341d40ad9b125fdaeefcd, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132905010271971488, guid: bde5feb4b7f341d40ad9b125fdaeefcd, type: 3}
+      propertyPath: m_Offset.x
+      value: -2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132905010271971488, guid: bde5feb4b7f341d40ad9b125fdaeefcd, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4132905010271971488, guid: bde5feb4b7f341d40ad9b125fdaeefcd, type: 3}
       propertyPath: m_IsTrigger
       value: 1
